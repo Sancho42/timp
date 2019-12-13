@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+</head>
+<body>
+ <div class="jumbotron">
+    <div class="container">
+      <h1>{% include "some_html.html" %}</h1>
+        {% block content %}
+        {% endblock %}
+      <p>
+        <a href="/" class="btn btn-success btn-lg">Главная страница</a>
+        <a href="/news" class="btn btn-primary btn-lg">Новости &raquo;</a>
+        <a href="/contact" class="btn btn-info btn-lg">Контакты &raquo;</a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>

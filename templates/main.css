@@ -1,0 +1,30 @@
+
+
+@charset "windows-1251";
+/* CSS Document */
+
+body {
+background-color:#0000cc
+}
+p {
+color:#222255
+}
+.forexample {
+color:Orange
+}
+#ident {
+color:#ffffff;
+font-weight:bold
+}
+
+
+
+.navbar{ background:#F97300;}
+.nav-link , .navbar-brand{ color: #f4f4f4; cursor: pointer;}
+.nav-link{ margin-right: 1em !important;}
+.nav-link:hover{ background: #f4f4f4; color: #f97300; }
+.navbar-collapse{ justify-content: flex-end;}
+.navbar-toggler{  background:#fff !important;}
+p {
+color:#ffffff
+}

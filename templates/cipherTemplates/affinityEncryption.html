@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VigenereCipher</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+<!--<h3>{{ textqwe }}</h3>  нужно переименовать но это долго и никаму не нужно -->
+
+<h3>{{ output }}</h3>
+<div class="container">
+   <div class="row">
+        <div class="col-2"><a href="{{ url_for('startPage') }}"> На главную </a></div>
+        <div class="col-2"><a href="{{ url_for('main', username=textqwe) }}"> Выбор шифра </a></div>
+        <div class="col-auto"><h2>Пользователь</h2> </div>
+        <div class="col"><h2>{{ textqwe }}</h2></div>
+
+   </div>
+</div>
+
+    <form method="post" action="/cipher/affinityEncryption/{{ textqwe }}">
+
+        <div class="container">
+            <div class="row">
+                <div class="col text-center"><h1>Аффинный шифр</h1> </div>
+            </div>
+            <div class="row">
+                <div class="col text-center">
+                    <h3>Ввод текста</h3>
+                    <p><textarea rows="20" cols="50" wrap="hard" name="INtext">{{ INtextValues }}</textarea></p>
+                </div>
+                <div class="col text-center">
+                    <h3>Ключи</h3>
+                    <p><textarea rows="10" cols="20" wrap="hard" name="INkeys">{{ INkeysValues}}</textarea></p>
+                </div>
+                <div class="col text-center">
+                    <h3>Результат</h3>
+                    <p><textarea rows="20" cols="50" wrap="hard" name="OUTencryptiontext" readonly>{{ OUTencryptiontextValues}}</textarea></p>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col text-center">
+                    <p><input type="radio" name="encryptionMode" id="encryptionMode1" value="encryption" checked> зашифровать </input></p>
+                    <p><input type="radio" name="encryptionMode" id="encryptionMode2" value="decryption"> расшифровать </input></p>
+                    <p><input type="submit" value="Отправить"></p>
+
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+    <div>
+        <h6>
+            <div class="container">
+                <div class="row">
+                    <div class="col text-center">
+            Аффинный шифр — это частный случай более общего моноалфавитного шифра подстановки. К шифрам подстановки
+            относятся также шифр Цезаря, ROT13 и Атбаш. Поскольку аффинный шифр легко дешифровать, он обладает слабыми
+            криптографическими свойствами.
+                    </div>
+                </div>
+            </div>
+        </h6>
+    </div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main page</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+<div class="container">
+   <div class="row">
+        <div class="col-2"><a href="{{ url_for('startPage') }}"> На главную </a></div>
+        <div class="col-auto"><h2>Пользователь</h2> </div>
+        <div class="col"><h2>{{ username }}</h2></div>
+
+   </div>
+</div>
+
+<div class="container">
+   <div class="row">
+
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+
+                <div>
+                    <!--qwe = {{ username }}  здесь творится бяка-хуяка     'VigenereCipher'+'-'+    -->
+                    <a href="{{ url_for('cipher_VigenereCipher', moodCipher=username ) }}"> Использовать шифр Виженера </a>
+                </div>
+                <div>
+                    <a href="{{ url_for('cipher_affinityEncryption', moodCipher=username ) }}"> Использовать Аффинный шифр </a>
+                </div>
+                 <div>
+                    <a href="{{ url_for('cipher_HillEncryption', moodCipher=username ) }}"> Использовать шифр Хилла </a>
+                </div>
+                <div>
+                    <a href="{{ url_for('cipher_RSA', moodCipher=username ) }}"> Использовать RSA </a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <h2>Список использованных шифров :</h2>
+        {% for message in OUTusedCiphers %}
+        <form method="post" action="/remove">
+            <div class="container">
+                <div class="row">
+                    <div class="col"><h3>{{ message.encryptionMode }}</h3> </div>
+                </div>
+                <div class="row">
+                    <div class="col-auto">
+                        <h3>входные данные</h3>
+                        <p>
+                            <textarea rows="5" cols="40" wrap="hard" name="INtext" readonly>{{ message.inputText }}</textarea>
+                        </p>
+                    </div>
+                    <div class="col-auto">
+                        <h3>ключ</h3>
+                        <p>
+                            <textarea rows="5" cols="15" wrap="hard" name="INtext" readonly>{{ message.inputKeys }}</textarea>
+                        </p>
+                    </div>
+                    <div class="col-auto">
+                        <h3>данные после обработки</h3>
+                        <p>
+                            <textarea rows="5" cols="40" wrap="hard" name="INtext" readonly>{{ message.outputText }}</textarea>
+                        </p>
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit"> удалить </button>
+                        <textarea style="resize: none" rows="1" cols="5" wrap="hard" name="IDCipher" readonly>{{ message.id }}</textarea>
+                    </div>
+               </div>
+            </div>
+        </form>
+        {% endfor %}
+        </div>
+
+   </div>
+</div>
+
+
+</body>
+</html>

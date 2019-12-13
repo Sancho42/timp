@@ -1,0 +1,66 @@
+UsedCipher(inputText='qwe', inputKeys='asd', outputText='zxc', encryptionMode='true',)
+
+
+from dbApp import db
+db.create_all()
+from dbApp import User
+from dbApp import UsedCipher
+py = User(username='qwe', password='qwe')
+UsedCipher(inputText='qwe', inputKeys='asd', outputText='zxc', encryptionMode='true', users=py)
+<UsedCipher None>
+p = UsedCipher(inputText='qwe', inputKeys='asd', outputText='zxc', encryptionMode='true')
+py.ciphers.append(p)
+db.session.add(py)
+
+
+<form method="post" action="/add_message">
+    <input type="text" name="text">
+    <input type="text" name="tag">
+    <button type="submit">Add massage</button>
+
+
+    @app.route('/add_message', methods=['POST'])
+        def add_message():
+            text = request.form['text']
+            tag = request.form['tag']
+            messages.append(Message(text, tag))
+            print(Message(text, tag))
+            print(messages)
+            return redirect(url_for('main'))
+
+
+@app.route('/check_user', methods=['POST', 'GET'])
+def check_user():
+    name = request.form['name']
+    password = request.form['pass']
+    checkUser = None
+    checkUser = User.query.filter_by(username=name).first()
+    if checkUser is not None:
+        if checkUser.password == password:
+            return redirect(url_for('main'))
+    print("check_user-->Не верный логин или пароль")
+    global loginError
+    loginError = 1
+    return redirect(url_for('login'))
+
+
+    <!-- navbar -->
+ <nav class="navbar navbar-expand-lg fixed-top ">
+ <a class="navbar-brand" href="#">Home</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+ <span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse " id="navbarSupportedContent">     <ul class="navbar-nav mr-4">
+ <li class="nav-item">
+     <a class="nav-link" data-value="about" href="#">About</a>        </li>
+<li class="nav-item">
+    <a class="nav-link " data-value="portfolio"href="#">Portfolio</a>
+ </li>
+ <li class="nav-item">
+    <a class="nav-link " data-value="blog" href="#">Blog</a>         </li>
+<li class="nav-item">
+   <a class="nav-link " data-value="team" href="#">         Team</a>       </li>
+<li class="nav-item">
+ <a class="nav-link " data-value="contact" href="#">Contact</a>       </li>
+</ul>
+</div></nav>
