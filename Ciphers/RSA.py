@@ -18,8 +18,8 @@ def inputTextKey(mode, inputText = '', inputKeys = ''):
             for i in text:
                 if i in alfavit:
                     code.append(alfavit.index(i))
-                else:
-                    print(i, "не находится в алфавите")
+                #else:
+                    #print(i, "не находится в алфавите")
 
 
         if mode == 1:
@@ -62,7 +62,7 @@ def inputTextKey(mode, inputText = '', inputKeys = ''):
             key.append(n)
         else:
             key = keyT.split(' ')
-            if len(key) == 2:
+            if len(key) >= 2:
                 try:
                     key[0] = int(key[0])
                     key[1] = int(key[1])
@@ -70,11 +70,10 @@ def inputTextKey(mode, inputText = '', inputKeys = ''):
                     print("ключ должен состоять из цифр не букв, А ЦИФР")
 
 
-        if len(code) != 0 and len(key) == 2:
+        if len(code) != 0 and len(key) >= 2:
             break
         else:
-            if inputText == '' and inputKeys == '':
-                return [1,2,3], 1, 10
+            return [1,2,3], 1, 10
 
 
     #print(code, key, keyMatrix)#

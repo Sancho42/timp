@@ -30,15 +30,24 @@
             <div class="row">
                 <div class="col text-center">
                     <h3>Ввод текста</h3>
-                    <p><textarea rows="20" cols="50" wrap="hard" name="INtext">{{ INtextValues }}</textarea></p>
+                    <p><textarea rows="20" cols="50" wrap="hard" name="INtext" maxlength="90000">{{ INtextValues }}</textarea></p>
                 </div>
                 <div class="col text-center">
-                    <h3>Ключи</h3>
-                    <p><textarea rows="10" cols="20" wrap="hard" name="INkeys">{{ INkeysValues}}</textarea></p>
+                    <h3>Ключ</h3>
+                    <p><textarea rows="10" cols="20" wrap="hard" name="INkeys" maxlength="3000">{{ INkeysValues}}</textarea></p>
+                    <p>
+                        Пример открытого ключа
+                            <input type="text" name="OUTpub" readonly value="{{ OUTpubkey }}">
+                        </p>
+                        <p>
+                         Пример закрытого ключа
+                            <input type="text" name="OUTpriv" readonly value="{{ OUTprivkey }}">
+
+                        </p>
                 </div>
                 <div class="col text-center">
                     <h3>Результат</h3>
-                    <p><textarea rows="20" cols="50" wrap="hard" name="OUTencryptiontext" readonly>{{ OUTencryptiontextValues}}</textarea></p>
+                    <p><textarea rows="20" cols="50" wrap="hard" name="OUTencryptiontext" maxlength="90000" readonly>{{ OUTencryptiontextValues}}</textarea></p>
                 </div>
 
             </div>
@@ -46,13 +55,31 @@
                 <div class="col text-center">
                     <p><input type="radio" name="encryptionMode" id="encryptionMode1" value="encryption" checked> зашифровать </input></p>
                     <p><input type="radio" name="encryptionMode" id="encryptionMode2" value="decryption"> расшифровать </input></p>
-                    <p><input type="submit" value="Отправить"></p>
+                    <p><input type="submit" name="crypt" value="Отправить"></p>
 
                 </div>
             </div>
         </div>
 
     </form>
+
+<!--<form method="post" action="/cipher/RSA_createKey/{{ textqwe }}">
+    <div class="container">
+        <div class="row">
+            <div class="col-2"> <a> Открытый ключ </a></div>
+            <div class="col-2"> <input type="text" name="openkey" size="50" readonly></div>
+        </div>
+        <div class="row">
+            <div class="col-2"> <a> Закрытый ключ </a></div>
+            <div class="col"> <input type="text" name="closekey" size="50" readonly> </a></div>
+        </div>
+        <div class="row">
+            <p><input type="submit" name="createkey" value="Создать ключи"></p>
+        </div>
+    </div>
+</form>  -->
+
+
 <div>
         <h6>
             <div class="container">
@@ -67,6 +94,7 @@
                                     Алгоритм используется в большом числе криптографических приложений, включая PGP, S/MIME, TLS/SSL,
                                     IPSEC/IKE и других.
                         </p>
+
                     </div>
                 </div>
             </div>

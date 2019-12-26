@@ -53,20 +53,7 @@ def inputKeyText(mode, rec = 0, inputText = '', inputKeys = ''):
 
         ############# перевод ключа при rec = 1
         keyMatrix1 = list()
-        if(rec == 1):
-            keyMatrix = [[0] * 3 for i in range(3)]
-            keyMatrix1 = list()
-            for q in range(2):
-                for j in range(3):
-                    for i in range(3):
-                        if key[j*3 + i] in alfavit:
-                            keyMatrix[j][i] = alfavit.index(key[q*9 + j*3 + i])
-                        else:
-                            print(key[q*9 + j*3 + i] , "не находится в алфавите, ключ невалидный")
-                            err = 1
-                            continue
-                if(q == 0):
-                    keyMatrix1 = copy.deepcopy(keyMatrix)
+
 
         if checkError(key, text, keyMatrix1, keyMatrix) == 0 and err == 0:
             break
@@ -76,8 +63,6 @@ def inputKeyText(mode, rec = 0, inputText = '', inputKeys = ''):
     #print(code, key, keyMatrix)#
     if(rec == 0):
         return code, keyMatrix
-    if(rec == 1):
-        return code, keyMatrix1, keyMatrix
 
 
 def outputText(code, consoleOutput=True):
